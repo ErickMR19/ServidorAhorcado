@@ -65,6 +65,10 @@ class Ahorcado{
      
         if ($palabra == $this->palabra)
         {
+            if( ($puntuacion = $this->obtenerPuntuacion()) > 0){
+               $db = new PDO('sqlite:puntajes.sqlite');
+               $db->exec("INSERT INTO Puntajes(Nombre, puntaje) VALUES ('{$this->nombre_jugador}', $puntuacion);");
+            }
            for($i = 0; $i < strlen($this->palabra); ++$i){
                   $this->palabra_descubierta[2*$i] = $this->palabra[$i];
            }
@@ -96,6 +100,10 @@ class Ahorcado{
             return -1; // partida terminada, perdida
         }
         if($this->meta == 0){
+            if( ($puntuacion = $this->obtenerPuntuacion()) > 0){
+               $db = new PDO('sqlite:puntajes.sqlite');
+               $db->exec("INSERT INTO Puntajes(Nombre, puntaje) VALUES ('{$this->nombre_jugador}', $puntuacion);");
+            }
             return 1; // partida terminada, ganada
         }
         return 0; //sigue jugando
@@ -114,7 +122,7 @@ class Ahorcado{
     }
 
     public function obtenerPuntuacion(){
-      return $this->meta * 10000 + $this->vidas * 1000 - $this->intentos * 500;
+      return strlen($this->palabra) * 10000 + $this->vidas * 1000 - $this->intentos * 500;
     }
  
    public function obtenerEstado(){
@@ -125,6 +133,10 @@ class Ahorcado{
    }
 
    public function obtenerPuntuacionesAltas(){
+    
+     $db = new PDO('sqlite:puntajes.sqlite');
+     $resultados = $db->query("SELECT nombre, puntaje FROM Puntajes ORDER BY puntaje DESC LIMIT 10");
+     return $resultados->fetchAll();
    } 
  
 }
