@@ -29,8 +29,8 @@
        <xsd:element name="jugarResult">
          <xsd:complexType>
           <xsd:sequence>
-           <xsd:element name="resultado" type="xsd:integer" />
-           <xsd:element name="vidasRestantes" type="xsd:integer" />
+           <xsd:element name="resultado" type="xsd:int" />
+           <xsd:element name="vidasRestantes" type="xsd:int" />
            <xsd:element name="descubierto" type="xsd:string" />
          </xsd:sequence>
         </xsd:complexType>        
@@ -54,8 +54,8 @@
        <xsd:element name="adivinarPalabraResult">
          <xsd:complexType>
           <xsd:sequence>
-           <xsd:element name="resultado" type="xsd:integer" />
-           <xsd:element name="vidasRestantes" type="xsd:integer" />
+           <xsd:element name="resultado" type="xsd:int" />
+           <xsd:element name="vidasRestantes" type="xsd:int" />
            <xsd:element name="descubierto" type="xsd:string" />
          </xsd:sequence>
         </xsd:complexType>        
@@ -74,10 +74,47 @@
        <xsd:element name="obtenerEstadoResult">
          <xsd:complexType>
           <xsd:sequence>
-           <xsd:element name="vidasRestantes" type="xsd:integer" />
+           <xsd:element name="vidasRestantes" type="xsd:int" />
            <xsd:element name="descubierto" type="xsd:string" />
          </xsd:sequence>
         </xsd:complexType>        
+       </xsd:element>
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+        
+    <!-- obtenerPuntuacion -->
+    <xsd:element name="obtenerPuntuacion">
+     <xsd:complexType />
+    </xsd:element>
+    <xsd:element name="obtenerPuntuacionReturn">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="obtenerPuntuacionResult" type="xsd:int" />
+         </xsd:sequence>
+        </xsd:complexType>        
+       </xsd:element>
+    
+    <!-- obtenerPuntuacionesAltas -->
+   
+   <xsd:complexType name="TipoPuntaje">
+     <xsd:sequence>
+      <xsd:element name="nombre" type="xsd:string" />
+      <xsd:element name="puntaje" type="xsd:int" />
+    </xsd:sequence>
+    </xsd:complexType>   
+    <xsd:element name="obtenerPuntuacionesAltas">
+     <xsd:complexType />
+    </xsd:element>
+    <xsd:element name="obtenerPuntuacionesAltasReturn">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="obtenerPuntuacionesAltasResult" >
+         <xsd:complexType>
+           <xsd:sequence >
+            <xsd:element name="item" type="tns:TipoPuntaje" maxOccurs="10"/>
+          </xsd:sequence>
+         </xsd:complexType>
        </xsd:element>
       </xsd:sequence>
      </xsd:complexType>
@@ -96,6 +133,7 @@
     </xsd:element>
    </xsd:schema>
   </types>
+  
 
   <!-- Mensajes para comunicarse con la clase JuegoAhorcado. -->
 
@@ -134,7 +172,25 @@
   <message name="obtenerEstadoResponse">
    <part name="parameters" element="tns:obtenerEstadoReturn" />
   </message>
+  
+  <!-- obtenerPuntuacion -->
+  <message name="obtenerPuntuacionRequest">
+   <part name="parameters" element="tns:obtenerPuntuacion" />
+  </message>
 
+  <message name="obtenerPuntuacionResponse">
+   <part name="parameters" element="tns:obtenerPuntuacionReturn" />
+  </message>
+
+  <!-- obtenerPuntuacionesAltas -->
+  <message name="obtenerPuntuacionesAltasRequest">
+   <part name="parameters" element="tns:obtenerPuntuacionesAltas" />
+  </message>
+
+  <message name="obtenerPuntuacionesAltasResponse">
+   <part name="parameters" element="tns:obtenerPuntuacionesAltasReturn" />
+  </message>
+  
   <!-- IngresarNombreJugador -->
   <message name="ingresarNombreJugadorRequest">
    <part name="parameters" element="tns:ingresarNombreJugador" />
@@ -169,6 +225,18 @@
    <operation name="obtenerEstado">
     <input message="tns:obtenerEstadoRequest" />
     <output message="tns:obtenerEstadoResponse" />
+   </operation>
+   
+   <!-- obtenerPuntuacion -->
+   <operation name="obtenerPuntuacion">
+    <input message="tns:obtenerPuntuacionRequest" />
+    <output message="tns:obtenerPuntuacionResponse" />
+   </operation>
+   
+   <!-- obtenerPuntuacionesAltas -->
+   <operation name="obtenerPuntuacionesAltas">
+    <input message="tns:obtenerPuntuacionesAltasRequest" />
+    <output message="tns:obtenerPuntuacionesAltasResponse" />
    </operation>
    
    <!-- IngresarNombreJugador -->
@@ -214,6 +282,24 @@ HTTP -->
    </operation>
    <operation name="obtenerEstado">
     <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#obtenerEstado" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>
+   <operation name="obtenerPuntuacion">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#obtenerPuntuacion" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>
+   <operation name="obtenerPuntuacionesAltas">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#obtenerPuntuacionesAltas" style="document" />
     <input>
     <soap:body use="literal" />
     </input>

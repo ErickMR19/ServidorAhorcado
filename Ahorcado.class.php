@@ -80,7 +80,7 @@ class Ahorcado{
               $this->vidas -= 3;
            }
            else{
-              $this->intentos += 5;
+              $this->intentos += 8;
               $this->vidas -= 1;
            }
            return [
@@ -113,7 +113,7 @@ class Ahorcado{
         $this->nombre_jugador = $nombre;
     }
 
-    public function obtenerResultado(){
+    public function obtenerPuntuacion(){
       return $this->meta * 10000 + $this->vidas * 1000 - $this->intentos * 500;
     }
  
@@ -123,7 +123,8 @@ class Ahorcado{
              'descubierto' => $this->palabra_descubierta
            ];
    }
+
+   public function obtenerPuntuacionesAltas(){
+   } 
  
 }
-
-
