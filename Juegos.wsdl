@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!-- Descripción WSDL de la clase Hola Mundo. -->
+
+ <definitions name="B23832_JuegoAhorcado" targetNamespace="urn:B23832_JuegoAhorcado" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:B23832_JuegoAhorcado" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+
+  <types xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <xsd:schema targetNamespace="urn:B23832_JuegoAhorcado" elementFormDefault="qualified">
+    
+    <!-- nuevoJuego -->
+    <xsd:element name="nuevoJuego">
+     <xsd:complexType />
+    </xsd:element>
+    <xsd:element name="nuevoJuegoReturn">
+     <xsd:complexType />
+    </xsd:element>
+    
+        <!-- jugar -->
+    <xsd:element name="jugar">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="letra" type="xsd:string" />
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="jugarReturn">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="jugarResult">
+         <xsd:complexType>
+          <xsd:sequence>
+           <xsd:element name="resultado" type="xsd:integer" />
+           <xsd:element name="vidasRestantes" type="xsd:integer" />
+           <xsd:element name="descubierto" type="xsd:string" />
+         </xsd:sequence>
+        </xsd:complexType>        
+       </xsd:element>
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+    
+    
+    <!-- adivinarPalabra -->
+    <xsd:element name="adivinarPalabra">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="palabra" type="xsd:string" />
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="adivinarPalabraReturn">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="adivinarPalabraResult">
+         <xsd:complexType>
+          <xsd:sequence>
+           <xsd:element name="resultado" type="xsd:integer" />
+           <xsd:element name="vidasRestantes" type="xsd:integer" />
+           <xsd:element name="descubierto" type="xsd:string" />
+         </xsd:sequence>
+        </xsd:complexType>        
+       </xsd:element>
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+    
+    <!-- obtenerEstado -->
+    <xsd:element name="obtenerEstado">
+     <xsd:complexType />
+    </xsd:element>
+    <xsd:element name="obtenerEstadoReturn">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="obtenerEstadoResult">
+         <xsd:complexType>
+          <xsd:sequence>
+           <xsd:element name="vidasRestantes" type="xsd:integer" />
+           <xsd:element name="descubierto" type="xsd:string" />
+         </xsd:sequence>
+        </xsd:complexType>        
+       </xsd:element>
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+    
+    <!-- ingresarNombreJugador -->    
+    <xsd:element name="ingresarNombreJugador">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="nombre" type="xsd:string" />
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ingresarNombreJugadorReturn">
+     <xsd:complexType />
+    </xsd:element>
+   </xsd:schema>
+  </types>
+
+  <!-- Mensajes para comunicarse con la clase JuegoAhorcado. -->
+
+  <!-- jugar -->
+  <message name="jugarRequest">
+   <part name="parameters" element="tns:jugar" />
+  </message>
+
+  <message name="jugarResponse">
+   <part name="parameters" element="tns:jugarReturn" />
+  </message>
+  
+  <!-- nuevoJuego -->
+  <message name="nuevoJuegoRequest">
+   <part name="parameters" element="tns:nuevoJuego" />
+  </message>
+
+  <message name="nuevoJuegoResponse">
+   <part name="parameters" element="tns:nuevoJuegoReturn" />
+  </message>
+  
+  <!-- adivinarPalabra -->
+  <message name="adivinarPalabraRequest">
+   <part name="parameters" element="tns:adivinarPalabra" />
+  </message>
+
+  <message name="adivinarPalabraResponse">
+   <part name="parameters" element="tns:adivinarPalabraReturn" />
+  </message>
+  
+  <!-- obtenerEstado -->
+  <message name="obtenerEstadoRequest">
+   <part name="parameters" element="tns:obtenerEstado" />
+  </message>
+
+  <message name="obtenerEstadoResponse">
+   <part name="parameters" element="tns:obtenerEstadoReturn" />
+  </message>
+
+  <!-- IngresarNombreJugador -->
+  <message name="ingresarNombreJugadorRequest">
+   <part name="parameters" element="tns:ingresarNombreJugador" />
+  </message>
+
+  <message name="ingresarNombreJugadorResponse">
+   <part name="parameters" element="tns:ingresarNombreJugadorReturn" />
+  </message>
+
+  <!-- Puerto para comunicar con la clase JuegoAhorcado, "B23832_JuegoAhorcado" -->
+  <portType name="B23832_JuegoAhorcadoPort">
+   
+   <!-- jugar -->
+   <operation name="jugar">
+    <input message="tns:jugarRequest" />
+    <output message="tns:jugarResponse" />
+   </operation>
+   
+   <!-- nuevoJuego -->
+   <operation name="nuevoJuego">
+    <input message="tns:nuevoJuegoRequest" />
+    <output message="tns:nuevoJuegoResponse" />
+   </operation>
+   
+   <!-- adivinarPalabra -->
+   <operation name="adivinarPalabra">
+    <input message="tns:adivinarPalabraRequest" />
+    <output message="tns:adivinarPalabraResponse" />
+   </operation>
+   
+   <!-- obtenerEstado -->
+   <operation name="obtenerEstado">
+    <input message="tns:obtenerEstadoRequest" />
+    <output message="tns:obtenerEstadoResponse" />
+   </operation>
+   
+   <!-- IngresarNombreJugador -->
+   <operation name="ingresarNombreJugador">
+    <input message="tns:ingresarNombreJugadorRequest" />
+    <output message="tns:ingresarNombreJugadorResponse" />
+   </operation>
+
+  </portType>
+
+  <!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over
+HTTP -->
+
+  <binding name="B23832_JuegoAhorcadoBinding" type="tns:B23832_JuegoAhorcadoPort">
+   <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+   <operation name="jugar">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#jugar" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>   
+   <operation name="nuevoJuego">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#nuevoJuego" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>
+   <operation name="adivinarPalabra">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#adivinarPalabra" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>
+   <operation name="obtenerEstado">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#obtenerEstado" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>
+   <operation name="ingresarNombreJugador">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#ingresarNombreJugador" style="document" />
+    <input>
+    <soap:body use="literal" />
+    </input>
+    <output>
+     <soap:body use="literal" />
+    </output>
+   </operation>
+
+  </binding>
+
+  <!-- Punto de comunicación con la clase JuegoAhorcado -->
+
+  <service name="B23832_JuegoAhorcado">
+   <documentation />
+   <port name="B23832_JuegoAhorcadoPort" binding="tns:B23832_JuegoAhorcadoBinding">
+    <soap:address location="http://testlocal.dev:80/ServidorAhorcado/" />
+   </port>
+  </service>
+
+ </definitions>
