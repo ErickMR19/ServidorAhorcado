@@ -3,6 +3,11 @@
  <!-- Descripción WSDL de la clase Hola Mundo. -->
 
  <definitions name="B23832_JuegoAhorcado" targetNamespace="urn:B23832_JuegoAhorcado" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:B23832_JuegoAhorcado" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:documentation>
+    Service: Serivicio de Juegos | Ahorcado
+    Version: 0.2
+    Owner: Erick Madrigal R.
+  </wsdl:documentation>
 
   <types xmlns="http://schemas.xmlsoap.org/wsdl/">
    <xsd:schema targetNamespace="urn:B23832_JuegoAhorcado" elementFormDefault="qualified">
@@ -201,46 +206,53 @@
   </message>
 
   <!-- Puerto para comunicar con la clase JuegoAhorcado, "B23832_JuegoAhorcado" -->
-  <portType name="B23832_JuegoAhorcadoPort">
-   
+  <portType name="B23832_JuegoAhorcadoPort">   
+  <wsdl:documentation>Provee metodos que permiten jugar Ahorcado</wsdl:documentation>
    <!-- jugar -->
    <operation name="jugar">
+    <wsdl:documentation>Permite enviar una letra y obtener el estado del juego</wsdl:documentation>
     <input message="tns:jugarRequest" />
     <output message="tns:jugarResponse" />
    </operation>
    
    <!-- nuevoJuego -->
    <operation name="nuevoJuego">
+  <wsdl:documentation>Reinicializa todas las variables y selecciona una nueva palabra</wsdl:documentation>
     <input message="tns:nuevoJuegoRequest" />
     <output message="tns:nuevoJuegoResponse" />
    </operation>
    
    <!-- adivinarPalabra -->
    <operation name="adivinarPalabra">
+    <wsdl:documentation>Permite enviar la palabra que se cree es la que se trata de adivinar y obtener el estado del juego</wsdl:documentation>
     <input message="tns:adivinarPalabraRequest" />
     <output message="tns:adivinarPalabraResponse" />
    </operation>
    
    <!-- obtenerEstado -->
    <operation name="obtenerEstado">
+    <wsdl:documentation>Permite obtener el estado del juego</wsdl:documentation>
     <input message="tns:obtenerEstadoRequest" />
     <output message="tns:obtenerEstadoResponse" />
    </operation>
    
    <!-- obtenerPuntuacion -->
    <operation name="obtenerPuntuacion">
+    <wsdl:documentation>Permite obtener la puntuación obtenidad en el juego</wsdl:documentation>
     <input message="tns:obtenerPuntuacionRequest" />
     <output message="tns:obtenerPuntuacionResponse" />
    </operation>
    
    <!-- obtenerPuntuacionesAltas -->
    <operation name="obtenerPuntuacionesAltas">
+    <wsdl:documentation>Obtiene hasta las 10 puntuaciones más altas registradas en el juego</wsdl:documentation>
     <input message="tns:obtenerPuntuacionesAltasRequest" />
     <output message="tns:obtenerPuntuacionesAltasResponse" />
    </operation>
    
    <!-- IngresarNombreJugador -->
    <operation name="ingresarNombreJugador">
+    <wsdl:documentation>Permite cambiar el nombre del jugador(este será utiilizado al guardarse el puntaje)</wsdl:documentation>
     <input message="tns:ingresarNombreJugadorRequest" />
     <output message="tns:ingresarNombreJugadorResponse" />
    </operation>
