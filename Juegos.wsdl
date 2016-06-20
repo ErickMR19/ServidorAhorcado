@@ -88,24 +88,24 @@
      </xsd:complexType>
     </xsd:element>
         
-    <!-- obtenerPuntuacion -->
-    <xsd:element name="obtenerPuntuacion">
+    <!-- obtenerTiempo -->
+    <xsd:element name="obtenerTiempo">
      <xsd:complexType />
     </xsd:element>
-    <xsd:element name="obtenerPuntuacionReturn">
+    <xsd:element name="obtenerTiempoReturn">
      <xsd:complexType>
       <xsd:sequence>
-       <xsd:element name="obtenerPuntuacionResult" type="xsd:int" />
+       <xsd:element name="obtenerTiempoResult" type="xsd:int" />
          </xsd:sequence>
         </xsd:complexType>        
        </xsd:element>
     
-    <!-- obtenerPuntuacionesAltas -->
+    <!-- obtenerTiempoesAltas -->
    
    <xsd:complexType name="TipoPuntaje">
      <xsd:sequence>
       <xsd:element name="nombre" type="xsd:string" />
-      <xsd:element name="puntaje" type="xsd:int" />
+      <xsd:element name="tiempo" type="xsd:int" />
     </xsd:sequence>
     </xsd:complexType>   
     <xsd:element name="obtenerPuntuacionesAltas">
@@ -178,13 +178,13 @@
    <part name="parameters" element="tns:obtenerEstadoReturn" />
   </message>
   
-  <!-- obtenerPuntuacion -->
-  <message name="obtenerPuntuacionRequest">
-   <part name="parameters" element="tns:obtenerPuntuacion" />
+  <!-- obtenerTiempo-->
+  <message name="obtenerTiempoRequest">
+   <part name="parameters" element="tns:obtenerTiempo" />
   </message>
 
-  <message name="obtenerPuntuacionResponse">
-   <part name="parameters" element="tns:obtenerPuntuacionReturn" />
+  <message name="obtenerTiempoResponse">
+   <part name="parameters" element="tns:obtenerTiempoReturn" />
   </message>
 
   <!-- obtenerPuntuacionesAltas -->
@@ -236,23 +236,23 @@
     <output message="tns:obtenerEstadoResponse" />
    </operation>
    
-   <!-- obtenerPuntuacion -->
-   <operation name="obtenerPuntuacion">
-    <wsdl:documentation>Permite obtener la puntuación obtenidad en el juego</wsdl:documentation>
-    <input message="tns:obtenerPuntuacionRequest" />
-    <output message="tns:obtenerPuntuacionResponse" />
+   <!-- obtenerTiempo -->
+   <operation name="obtenerTiempo">
+    <wsdl:documentation>Permite obtener el tiempo de juego</wsdl:documentation>
+    <input message="tns:obtenerTiempoRequest" />
+    <output message="tns:obtenerTiempoResponse" />
    </operation>
    
    <!-- obtenerPuntuacionesAltas -->
    <operation name="obtenerPuntuacionesAltas">
-    <wsdl:documentation>Obtiene hasta las 10 puntuaciones más altas registradas en el juego</wsdl:documentation>
+    <wsdl:documentation>Obtiene hasta las 10 mejores puntuaciones registradas en el juego</wsdl:documentation>
     <input message="tns:obtenerPuntuacionesAltasRequest" />
     <output message="tns:obtenerPuntuacionesAltasResponse" />
    </operation>
    
    <!-- IngresarNombreJugador -->
    <operation name="ingresarNombreJugador">
-    <wsdl:documentation>Permite cambiar el nombre del jugador(este será utiilizado al guardarse el puntaje)</wsdl:documentation>
+    <wsdl:documentation>Permite cambiar el nombre del jugador(este será utilizado al guardarse el puntaje)</wsdl:documentation>
     <input message="tns:ingresarNombreJugadorRequest" />
     <output message="tns:ingresarNombreJugadorResponse" />
    </operation>
@@ -301,8 +301,8 @@ HTTP -->
      <soap:body use="literal" />
     </output>
    </operation>
-   <operation name="obtenerPuntuacion">
-    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#obtenerPuntuacion" style="document" />
+   <operation name="obtenerTiempo">
+    <soap:operation soapAction="urn:B23832_JuegoAhorcado#Ahorcado#obtenerTiempo" style="document" />
     <input>
     <soap:body use="literal" />
     </input>
